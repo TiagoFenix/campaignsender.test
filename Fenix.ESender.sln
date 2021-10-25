@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fenix.ESender.Test", "Fenix.ESender.Test\Fenix.ESender.Test.csproj", "{F7342D09-FFC6-4E44-8C6B-E0EB60F8910D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fenix.ESender.API", "Fenix.ESender.API\Fenix.ESender.API.csproj", "{134EDE55-034A-4C49-86DF-A910C1253C73}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Fenix.ESender.DB", "Fenix.ESender.DB\Fenix.ESender.DB.sqlproj", "{47CF6AFD-8D0A-4037-B736-315AAF4F09CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7342D09-FFC6-4E44-8C6B-E0EB60F8910D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7342D09-FFC6-4E44-8C6B-E0EB60F8910D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7342D09-FFC6-4E44-8C6B-E0EB60F8910D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7342D09-FFC6-4E44-8C6B-E0EB60F8910D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{134EDE55-034A-4C49-86DF-A910C1253C73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{134EDE55-034A-4C49-86DF-A910C1253C73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{134EDE55-034A-4C49-86DF-A910C1253C73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{134EDE55-034A-4C49-86DF-A910C1253C73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47CF6AFD-8D0A-4037-B736-315AAF4F09CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47CF6AFD-8D0A-4037-B736-315AAF4F09CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47CF6AFD-8D0A-4037-B736-315AAF4F09CE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{47CF6AFD-8D0A-4037-B736-315AAF4F09CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47CF6AFD-8D0A-4037-B736-315AAF4F09CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47CF6AFD-8D0A-4037-B736-315AAF4F09CE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FEAB2B21-FC15-4B0B-A655-F77B107B1250}
+	EndGlobalSection
+EndGlobal
