@@ -59,5 +59,16 @@
     <Folder Include="Tables" />
     <Folder Include="Scripts" />
     <Folder Include="Views" />
+    <Folder Include="Schema" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="Schema\Script.PreDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\Campaign.sql" />
+    <Build Include="Tables\CampaignMessage.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\SQL Table Test.sql" />
   </ItemGroup>
 </Project>
