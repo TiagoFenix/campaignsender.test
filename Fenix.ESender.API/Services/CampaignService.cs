@@ -39,18 +39,22 @@ namespace Fenix.ESender.API.Services
 
             response.campaingId = newCampaign.campaignID.GetValueOrDefault();
 
+            List<Task> tasks = new List<Task>();
+
             foreach (int contactID in contactIds)
             {
                 try
                 {
                     CampaignMessage newCampaignMsg = new CampaignMessage(newCampaign.campaignID, contactID);
-                    await campaingMessageRepository.Insert(newCampaignMsg);
+                    tasks.Add(campaingMessageRepository.Insert(newCampaignMsg));
                 }
                 catch (Exception e)
                 {
                     response.errors.Add(e.Message);
                 }
             }
+
+            await Task.WhenAll(tasks.ToArray());
 
             //    transactionScope.Complete();
             //}

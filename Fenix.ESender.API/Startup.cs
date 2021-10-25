@@ -27,6 +27,8 @@ namespace Fenix.ESender.API
                 return new SqlConnectionFactory(Configuration.GetConnectionString("SqlConnection"));
             });
 
+            //Add seed data
+
             //Repository
             services.AddTransient<ICampaignRepository, CampaignRepository>();
             services.AddTransient<ICampaignMessageRepository, CampaignMessageRepository>();
