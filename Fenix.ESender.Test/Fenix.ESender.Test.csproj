@@ -17,4 +17,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Fenix.ESender.API\Fenix.ESender.API.csproj" />
+  </ItemGroup>
+
 </Project>

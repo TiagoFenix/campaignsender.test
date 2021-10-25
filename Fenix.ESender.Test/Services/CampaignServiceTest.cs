@@ -1,3 +1,4 @@
+using Fenix.ESender.API.Data;
 using Moq;
 using NUnit.Framework;
 
@@ -15,16 +16,14 @@ namespace Fenix.ESender.Test
         public void CampaignInsert_Success()
         {
             //Arrange
-            //var mock = new Mock<IGetDataRepository>();
-            //mock.Setup(p => p.GetNameById(1)).Returns("Jignesh");
+            API.Models.Campaign request = new API.Models.Campaign();
+            var mock = new Mock<ICampaignRepository>();
+            mock.Setup(p => p.Insert(request)).ReturnsAsync(request);
 
             //Act
 
 
             //Assert
-
-
-
             Assert.Pass();
         }
 
