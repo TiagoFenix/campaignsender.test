@@ -29,15 +29,14 @@ namespace Fenix.ESender.API.Services
             return await campaingRepository.GetOne(campaignID);
         }
 
-        public async Task<CampaignInsertResponseDTO> SendCampaingEmail(Campaign campaign, List<int> contactIds)
+        public async Task<(int,List<string>)> SendCampaingEmail(Campaign campaign, List<int> contactIds)
         {
-            CampaignInsertResponseDTO response = new CampaignInsertResponseDTO();
+            int campaingId = 0;
+            List<string> errors = new List<string>();
 
-            //using (TransactionScope transactionScope = new TransactionScope())
-            //{
             var newCampaign = await campaingRepository.Insert(campaign);
 
-            response.campaingId = newCampaign.campaignID.GetValueOrDefault();
+            campaingId = newCampaign.campaignID.GetValueOrDefault();
 
             List<Task> tasks = new List<Task>();
 
@@ -50,16 +49,13 @@ namespace Fenix.ESender.API.Services
                 }
                 catch (Exception e)
                 {
-                    response.errors.Add(e.Message);
+                    errors.Add(e.Message);
                 }
             }
 
             await Task.WhenAll(tasks.ToArray());
 
-            //    transactionScope.Complete();
-            //}
-
-            return response;
+            return (campaingId, errors);
         }
 
         public async Task<bool> CancelCampaingEmail(Campaign campaing)

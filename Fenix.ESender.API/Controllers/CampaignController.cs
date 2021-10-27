@@ -56,12 +56,15 @@ namespace Fenix.ESender.API.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(IEnumerable), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(List<ValidationFailure>), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> SendEmailCampaign([FromBody] CampaignInsertRequestDTO campaign)
+        public async Task<IActionResult> SendEmailCampaign([FromBody] CampaignInsertRequestDTO request)
         {
             var validator = new CampaignInsertResquestValidator();
-            var result = validator.Validate(campaign);
+            var result = validator.Validate(request);
             if (result.IsValid)
-                return Ok(await this._service.SendCampaingEmail(_mapper.Map<Campaign>(campaign), campaign.contactIds));
+            {
+                Campaign newCampaing = _mapper.Map<Campaign>(request);
+                return Ok(_mapper.Map<CampaignInsertResponseDTO>(await this._service.SendCampaingEmail(newCampaing, request.contactIds)));
+            }                
 
             return BadRequest(result.Errors);
         }
