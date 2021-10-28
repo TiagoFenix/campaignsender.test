@@ -22,6 +22,11 @@ namespace Fenix.ESender.Services
             this.campaignSQSMessage = campaignSQSMessage;
         }
 
+        /// <summary>
+        /// Get all Campaigns
+        /// </summary>
+        /// <param name="campaign">Dapper Filter Object</param>
+        /// <returns></returns>
         public IEnumerable<Campaign> Get(Campaign campaign = null)
         {
             return campaingRepository.Get(campaign);
@@ -32,6 +37,12 @@ namespace Fenix.ESender.Services
             return campaingRepository.GetOne(campaignID);
         }
 
+        /// <summary>
+        /// Sends Campaign and Campaign Message using SQS queue
+        /// </summary>
+        /// <param name="campaign"></param>
+        /// <param name="contactIds"></param>
+        /// <returns></returns>
         public async Task<(int,List<string>)> SendCampaingEmail(Campaign campaign, List<int> contactIds)
         {
             int campaingId = 0;
@@ -62,6 +73,11 @@ namespace Fenix.ESender.Services
             return (campaingId, errors);
         }
 
+        /// <summary>
+        /// Cancel Campaing Email 
+        /// </summary>
+        /// <param name="campaing"></param>
+        /// <returns></returns>
         public async Task<bool> CancelCampaingEmail(Campaign campaing)
         {
             campaing.dateTimeDeleted = DateTime.Now;
@@ -69,11 +85,21 @@ namespace Fenix.ESender.Services
             return true;
         }
 
+        /// <summary>
+        /// Returns Campaign List scheduled by PartyId
+        /// </summary>
+        /// <param name="partyId"></param>
+        /// <returns></returns>
         public IEnumerable<Campaign> GetSecheduledByPartyId(int partyId)
         {
             return campaingRepository.GetSecheduledByPartyId(partyId);
         }
 
+        /// <summary>
+        /// Returns Campaign List already sent by PartyId
+        /// </summary>
+        /// <param name="partyId"></param>
+        /// <returns></returns>
         public IEnumerable<Campaign> GetSentByPartyId(int partyId)
         {
             return campaingRepository.GetSentByPartyId(partyId);

@@ -46,7 +46,6 @@ namespace Fenix.ESender.API.Controllers
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         public IActionResult GetSentByPartyId([FromRoute] int partyId) => Ok(_service.GetSentByPartyId(partyId));
 
-
         [HttpGet]
         [Route("byParty/{partyId:int}")]
         [ProducesResponseType(typeof(IEnumerable), StatusCodes.Status200OK)]
@@ -58,10 +57,12 @@ namespace Fenix.ESender.API.Controllers
         [ProducesResponseType(typeof(List<ValidationFailure>), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> SendEmailCampaign([FromBody] CampaignInsertRequestDTO request)
         {
+            //Validation
             var validator = new CampaignInsertResquestValidator();
             var result = validator.Validate(request);
             if (result.IsValid)
             {
+                //Sending campaign to process. Automap is used to map between domain and DTO objects
                 Campaign newCampaing = _mapper.Map<Campaign>(request);
                 return Ok(_mapper.Map<CampaignInsertResponseDTO>(await this._service.SendCampaingEmail(newCampaing, request.contactIds)));
             }                
