@@ -1,6 +1,7 @@
 using AutoMapper;
-using Fenix.ESender.API.Data;
-using Fenix.ESender.API.Services;
+using Fenix.ESender.Data;
+using Fenix.ESender.Services;
+using Fenix.ESender.SQS;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,7 +22,7 @@ namespace Fenix.ESender.API
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {         
+        {
             services.AddSingleton<IConnectionFactory, SqlConnectionFactory>(service =>
             {
                 return new SqlConnectionFactory(Configuration.GetConnectionString("SqlConnection"));
@@ -36,6 +37,9 @@ namespace Fenix.ESender.API
             //Services
             services.AddTransient<ICampaignService, CampaignService>();
             services.AddTransient<ICampaignMessageService, CampaignMessageService>();
+
+            //Helpers
+            services.AddTransient<ICampaignSQSMessage, CampaignSQSMessage>();
 
             services.AddAutoMapper(typeof(Startup));
 

@@ -1,10 +1,10 @@
-﻿using Fenix.ESender.API.Data;
-using Fenix.ESender.API.Models;
+﻿using Fenix.ESender.Data;
+using Fenix.ESender.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Fenix.ESender.API.Services
+namespace Fenix.ESender.Services
 {
     public class CampaignMessageService : ICampaignMessageService
     {

@@ -1,6 +1,7 @@
-using Fenix.ESender.API.Data;
-using Fenix.ESender.API.Models;
-using Fenix.ESender.API.Services;
+using Fenix.ESender.Data;
+using Fenix.ESender.Models;
+using Fenix.ESender.Services;
+using Fenix.ESender.SQS;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -14,16 +15,19 @@ namespace Fenix.ESender.Test
     {
         private Campaign _campaign;
         private CampaignService _service;
+
         private Mock<ICampaignRepository> _mockCampaingRepository;
         private Mock<ICampaignMessageRepository> _mockCampaingMessageRepository;
+        private Mock<ICampaignSQSMessage> _mockCampaingSQSMessage;
 
         [SetUp]
         public void Setup()
         {
             _mockCampaingRepository = new Mock<ICampaignRepository>();
             _mockCampaingMessageRepository = new Mock<ICampaignMessageRepository>();
+            _mockCampaingSQSMessage = new Mock<ICampaignSQSMessage>();
             _campaign = new Campaign();
-            _service = new CampaignService(_mockCampaingRepository.Object, _mockCampaingMessageRepository.Object);
+            _service = new CampaignService(_mockCampaingRepository.Object, _mockCampaingMessageRepository.Object, _mockCampaingSQSMessage.Object);
 
             _campaign = new Campaign();
             _campaign.partyID = 1;

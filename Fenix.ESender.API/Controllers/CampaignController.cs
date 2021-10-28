@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Fenix.ESender.API.Models;
-using Fenix.ESender.API.Services;
+using Fenix.ESender.Models;
+using Fenix.ESender.Services;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

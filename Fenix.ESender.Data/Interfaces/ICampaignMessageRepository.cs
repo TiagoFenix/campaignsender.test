@@ -1,8 +1,8 @@
-﻿using Fenix.ESender.API.Models;
+﻿using Fenix.ESender.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Fenix.ESender.API.Data
+namespace Fenix.ESender.Data
 {
     public interface ICampaignMessageRepository
     {

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.SQS" Version="3.7.1.30" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fenix.ESender.Data\Fenix.ESender.Data.csproj" />
+    <ProjectReference Include="..\Fenix.ESender.Models\Fenix.ESender.Models.csproj" />
+  </ItemGroup>
+
+</Project>

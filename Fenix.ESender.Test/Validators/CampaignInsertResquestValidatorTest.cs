@@ -1,12 +1,7 @@
-using Fenix.ESender.API.Data;
-using Fenix.ESender.API.Models;
-using Fenix.ESender.API.Services;
-using Moq;
+using Fenix.ESender.Models;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Fenix.ESender.Test
 {

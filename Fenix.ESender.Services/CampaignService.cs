@@ -1,22 +1,25 @@
-﻿using Fenix.ESender.API.Data;
-using Fenix.ESender.API.Models;
+﻿using Fenix.ESender.Data;
+using Fenix.ESender.Models;
+using Fenix.ESender.SQS;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Transactions;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
-namespace Fenix.ESender.API.Services
+namespace Fenix.ESender.Services
 {
     public class CampaignService : ICampaignService
     {
         private readonly ICampaignRepository campaingRepository;
         private readonly ICampaignMessageRepository campaingMessageRepository;
+        private readonly ICampaignSQSMessage campaignSQSMessage;
 
-        public CampaignService(ICampaignRepository campaingRepository, ICampaignMessageRepository campaingMessageRepository)
+        public CampaignService(ICampaignRepository campaingRepository, ICampaignMessageRepository campaingMessageRepository, ICampaignSQSMessage campaignSQSMessage)
         {
             this.campaingRepository = campaingRepository;
             this.campaingMessageRepository = campaingMessageRepository;
+            this.campaignSQSMessage = campaignSQSMessage;
         }
 
         public IEnumerable<Campaign> Get(Campaign campaign = null)
@@ -45,7 +48,8 @@ namespace Fenix.ESender.API.Services
                 try
                 {
                     CampaignMessage newCampaignMsg = new CampaignMessage(newCampaign.campaignID, contactID);
-                    tasks.Add(campaingMessageRepository.Insert(newCampaignMsg));
+                    string jsonString = JsonSerializer.Serialize(newCampaignMsg);
+                    tasks.Add(campaignSQSMessage.SendMessagAsync(jsonString));
                 }
                 catch (Exception e)
                 {

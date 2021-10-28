@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using System;
 
-namespace Fenix.ESender.API.Models
+namespace Fenix.ESender.Models
 {
     public class CampaignInsertResquestValidator : AbstractValidator<CampaignInsertRequestDTO>
     {

@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Fenix.ESender.API.Data
+namespace Fenix.ESender.Data
 {
     public class BaseRepository
     {

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Fenix.ESender.API.Models;
+using Fenix.ESender.Models;
 using System.Collections.Generic;
 
 public class AutoMapping : Profile

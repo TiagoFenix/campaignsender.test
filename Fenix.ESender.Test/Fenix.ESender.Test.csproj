@@ -20,6 +20,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Fenix.ESender.API\Fenix.ESender.API.csproj" />
+    <ProjectReference Include="..\Fenix.ESender.Data\Fenix.ESender.Data.csproj" />
+    <ProjectReference Include="..\Fenix.ESender.Models\Fenix.ESender.Models.csproj" />
+    <ProjectReference Include="..\Fenix.ESender.Services\Fenix.ESender.Services.csproj" />
+    <ProjectReference Include="..\Fenix.ESender.SQS\Fenix.ESender.SQS.csproj" />
   </ItemGroup>
 
 </Project>

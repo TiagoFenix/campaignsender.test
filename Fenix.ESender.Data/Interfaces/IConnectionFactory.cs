@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace Fenix.ESender.API.Data
+namespace Fenix.ESender.Data
 {
     public interface IConnectionFactory
     {

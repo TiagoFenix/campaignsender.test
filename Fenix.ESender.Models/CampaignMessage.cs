@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Fenix.ESender.API.Models
+namespace Fenix.ESender.Models
 {
     public class CampaignMessage
     {
+        public CampaignMessage()
+        {
+
+        }
         public CampaignMessage(int? campaignID, int? contactID)
         {
             this.campaignID = campaignID;
