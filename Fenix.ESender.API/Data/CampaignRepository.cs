@@ -100,41 +100,41 @@ namespace Fenix.ESender.API.Data
             }
         }
 
-        public async Task<IEnumerable<Campaign>> Get(Campaign campaign = null)
+        public IEnumerable<Campaign> Get(Campaign campaign = null)
         {
             using (IDbConnection db = connection.GetOpenConnection())
             {
-                return await db.QueryAsync<Campaign>(GetSelectSqlStr(), campaign);
+                return db.Query<Campaign>(GetSelectSqlStr(), campaign);
             }
         }
 
-        public async Task<IEnumerable<Campaign>> GetSecheduledByPartyId(int partyId)
+        public IEnumerable<Campaign> GetSecheduledByPartyId(int partyId)
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("partyId", partyId);
 
             using (IDbConnection db = connection.GetOpenConnection())
             {
-                return await db.QueryAsync<Campaign>(GetSelectSqlStr() + " WHERE DateTimeSent IS NULL AND PartyId = @partyId ORDER BY DateTimeScheduled DESC", parameters);
+                return db.Query<Campaign>(GetSelectSqlStr() + " WHERE DateTimeSent IS NULL AND PartyId = @partyId ORDER BY DateTimeScheduled DESC", parameters);
             }
         }
 
-        public async Task<IEnumerable<Campaign>> GetSentByPartyId(int partyId)
+        public IEnumerable<Campaign> GetSentByPartyId(int partyId)
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("partyId", partyId);
 
             using (IDbConnection db = connection.GetOpenConnection())
             {
-                return await db.QueryAsync<Campaign>(GetSelectSqlStr() + " WHERE DateTimeSent IS NOT NULL AND PartyId = @partyId ORDER BY DateTimeSent DESC", parameters);
+                return db.Query<Campaign>(GetSelectSqlStr() + " WHERE DateTimeSent IS NOT NULL AND PartyId = @partyId ORDER BY DateTimeSent DESC", parameters);
             }
         }
 
-        public async Task<Campaign> GetOne(int campaignID)
+        public Campaign GetOne(int campaignID)
         {
             using (IDbConnection db = connection.GetOpenConnection())
             {
-                return await db.QueryFirstOrDefaultAsync<Campaign>(GetSelectSqlStr(), new Campaign() { campaignID = campaignID });
+                return db.QueryFirstOrDefault<Campaign>(GetSelectSqlStr(), new Campaign() { campaignID = campaignID });
             }
         }
 

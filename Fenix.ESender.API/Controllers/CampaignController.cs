@@ -32,26 +32,26 @@ namespace Fenix.ESender.API.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Get() => Ok(await _service.Get());
+        public IActionResult Get() => Ok(_service.Get());
 
         [HttpGet]
         [Route("scheduledByPartyId/{partyId:int}")]
         [ProducesResponseType(typeof(IEnumerable), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetSecheduledByPartyId([FromRoute] int partyId) => Ok(await _service.GetSecheduledByPartyId(partyId));
+        public IActionResult GetSecheduledByPartyId([FromRoute] int partyId) => Ok(_service.GetSecheduledByPartyId(partyId));
 
         [HttpGet]
         [Route("sentByPartyId/{partyId:int}")]
         [ProducesResponseType(typeof(IEnumerable), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetSentByPartyId([FromRoute] int partyId) => Ok(await _service.GetSentByPartyId(partyId));
+        public IActionResult GetSentByPartyId([FromRoute] int partyId) => Ok(_service.GetSentByPartyId(partyId));
 
 
         [HttpGet]
         [Route("byParty/{partyId:int}")]
         [ProducesResponseType(typeof(IEnumerable), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetByPartyId([FromRoute] int partyId) => Ok(await _service.Get());
+        public IActionResult GetByPartyId([FromRoute] int partyId) => Ok(_service.Get());
 
         [HttpPost]
         [ProducesResponseType(typeof(IEnumerable), StatusCodes.Status200OK)]
@@ -75,7 +75,7 @@ namespace Fenix.ESender.API.Controllers
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CancelEmailCampaign([FromRoute] int campaignID)
         {
-            Campaign campaing = await _service.GetOne(campaignID);
+            Campaign campaing = _service.GetOne(campaignID);
 
             //TODO: Refactor Validation with interception
             //Not sent yet sent. DateTimeSent not set

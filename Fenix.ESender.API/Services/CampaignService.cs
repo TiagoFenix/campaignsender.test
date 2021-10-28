@@ -19,14 +19,14 @@ namespace Fenix.ESender.API.Services
             this.campaingMessageRepository = campaingMessageRepository;
         }
 
-        public async Task<IEnumerable<Campaign>> Get(Campaign campaign = null)
+        public IEnumerable<Campaign> Get(Campaign campaign = null)
         {
-            return await campaingRepository.Get(campaign);
+            return campaingRepository.Get(campaign);
         }
 
-        public async Task<Campaign> GetOne(int campaignID)
+        public Campaign GetOne(int campaignID)
         {
-            return await campaingRepository.GetOne(campaignID);
+            return campaingRepository.GetOne(campaignID);
         }
 
         public async Task<(int,List<string>)> SendCampaingEmail(Campaign campaign, List<int> contactIds)
@@ -65,14 +65,14 @@ namespace Fenix.ESender.API.Services
             return true;
         }
 
-        public async Task<IEnumerable<Campaign>> GetSecheduledByPartyId(int partyId)
+        public IEnumerable<Campaign> GetSecheduledByPartyId(int partyId)
         {
-            return await campaingRepository.GetSecheduledByPartyId(partyId);
+            return campaingRepository.GetSecheduledByPartyId(partyId);
         }
 
-        public async Task<IEnumerable<Campaign>> GetSentByPartyId(int partyId)
+        public IEnumerable<Campaign> GetSentByPartyId(int partyId)
         {
-            return await campaingRepository.GetSentByPartyId(partyId);
+            return campaingRepository.GetSentByPartyId(partyId);
         }
     }
 }
